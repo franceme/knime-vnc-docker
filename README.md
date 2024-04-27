@@ -10,6 +10,9 @@ KNIME Analytics Platform with VNC/noVNC for Container Cluster Platforms (Openshi
 # Just a suggestion: If you need Python Jupyter (loaded with Tensorflow) Docker besides KNIME, you may want to check out:
 * [Python Jupyter (by openkbs/tensorflow-python3-jupyter)](https://hub.docker.com/repository/docker/openkbs/tensorflow-python3-jupyter)
 
+## EXE
+docker run --rm -it  -v "%cd%:/workspace" -p 6901:6901 frantzme/knime:latest /bin/bash
+
 ## Join, Share, and Support the KNIME Community: 
 * [KNIME Blogs](https://www.knime.com/blog)
 * [Join the Community at KNIME web site](https://www.knime.com/knime-community)

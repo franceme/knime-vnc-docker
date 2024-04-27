@@ -1,0 +1,30 @@
+name: Repo Dispatch
+
+on:
+  repository_dispatch:
+    types: [docker-build]
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Docker Login
+      uses: docker/login-action@v2.0.0
+      with:
+        username: frantzme
+        password: ${{secrets.DOCKER_TOKEN}}
+
+    - name: Build the docker image
+      run: docker build . --file Dockerfile --tag frantzme/knime:latest
+
+    - name: Docker Push
+      run: docker push frantzme/knime:latest
